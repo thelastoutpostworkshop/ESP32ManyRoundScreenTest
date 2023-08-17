@@ -7,19 +7,20 @@
 #include <AnimatedGIF.h> // Install this library with the Arduino IDE Library Manager
 #include "images/darthvader.h"
 #include "images/x_wing.h"
-#include "images/nostromo.h"
+#include "images/hud_1.h"
 #include "images/hud_6.h"
 #include "images/hud_2.h"
 
-const int NUM_DISPLAYS = 5; // Adjust this value based on the number of displays
+const int NUM_DISPLAYS = 4; // Adjust this value based on the number of displays
 AnimatedGIF gifs[NUM_DISPLAYS];
 
 // Define CS pins for all displays
-const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21, 32, 33}; // Add more pins if you have more displays
+const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21, 32}; // Add more pins if you have more displays
+// const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21, 32, 33}; // Add more pins if you have more displays
 
 // Define the images for all displays
-const uint8_t *GIF_IMAGES[NUM_DISPLAYS] = {x_wing, darthvader, hud_6, nostromo, hud_2};                                      // Add more images if needed
-const size_t GIF_SIZES[NUM_DISPLAYS] = {sizeof(x_wing), sizeof(darthvader), sizeof(hud_6), sizeof(nostromo), sizeof(hud_2)}; // Add more sizes if needed
+const uint8_t *GIF_IMAGES[NUM_DISPLAYS] = {x_wing, darthvader, hud_6, hud_1};                                      // Add more images if needed
+const size_t GIF_SIZES[NUM_DISPLAYS] = {sizeof(x_wing), sizeof(darthvader), sizeof(hud_6), sizeof(hud_1)}; // Add more sizes if needed
 
 //Free Heap with 3 Animated GIF : 241248
 //Free Heap with 4 Animated GIF : 217332

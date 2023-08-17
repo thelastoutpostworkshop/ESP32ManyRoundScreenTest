@@ -21,6 +21,9 @@ const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21, 32, 33}; // Add more pins if you 
 const uint8_t *GIF_IMAGES[NUM_DISPLAYS] = {x_wing, darthvader, hud_6, nostromo, hud_2};                                      // Add more images if needed
 const size_t GIF_SIZES[NUM_DISPLAYS] = {sizeof(x_wing), sizeof(darthvader), sizeof(hud_6), sizeof(nostromo), sizeof(hud_2)}; // Add more sizes if needed
 
+//Free Heap with 3 Animated GIF : 241248
+//Free Heap with 4 Animated GIF : 217332
+
 TFT_eSPI tft;
 
 void setup()
@@ -48,6 +51,7 @@ void setup()
     }
     digitalWrite(CS_PINS[i], HIGH); // Deselect the display
   }
+  Serial.printf("Free Heap = %ld",ESP.getFreeHeap());
 }
 
 void loop()

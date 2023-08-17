@@ -23,6 +23,8 @@ const size_t GIF_SIZES[NUM_DISPLAYS] = {sizeof(x_wing), sizeof(darthvader), size
 
 //Free Heap with 3 Animated GIF : 241248
 //Free Heap with 4 Animated GIF : 217332
+// ld.exe: region `dram0_0_seg' overflowed by 17664 bytes
+// ld.exe: region `dram0_0_seg' overflowed by 17264 bytes
 
 TFT_eSPI tft;
 

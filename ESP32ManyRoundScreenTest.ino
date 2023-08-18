@@ -89,7 +89,7 @@ void playGif(AnimatedGIF *gif, int screenIndex)
     gif->playFrame(false, NULL);
   }
   if(res == -1) {
-      Serial.printf("Gif Error = %d \n",gif->getLastError());
+      Serial.printf("Gif Error = %d on screen %d\n",gif->getLastError(),screenIndex);
   }
   tft.endWrite();
   digitalWrite(CS_PINS[screenIndex], HIGH); // Deselect the display

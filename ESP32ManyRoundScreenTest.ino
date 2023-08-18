@@ -22,8 +22,10 @@
 #include "images/darthvader.h"
 #include "images/x_wing.h"
 
-const int NUM_DISPLAYS = 6;                     // Adjust this value based on the number of displays
-const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21,32,33,25}; // Add more pins if you have more displays
+ // Adjust this value based on the number of displays
+const int NUM_DISPLAYS = 6;                    
+// Add more CS pins if you have more displays, each display must have a dedicated pin
+const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21,32,33,25}; 
 
 AnimatedGIF gif_1;
 AnimatedGIF gif_2;

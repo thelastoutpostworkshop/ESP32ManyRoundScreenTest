@@ -23,10 +23,10 @@
 #include "images/x_wing.h"
 #include "images/bb8.h"
 
- // Adjust this value based on the number of displays
-const int NUM_DISPLAYS = 6;                    
+// Adjust this value based on the number of displays
+const int NUM_DISPLAYS = 6;
 // Add more CS pins if you have more displays, each display must have a dedicated pin
-const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21,32,33,26}; 
+const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21, 32, 33, 26};
 
 AnimatedGIF gif_1;
 AnimatedGIF gif_2;
@@ -36,6 +36,8 @@ AnimatedGIF gif_5;
 AnimatedGIF gif_6;
 
 TFT_eSPI tft = TFT_eSPI();
+
+unsigned long lastFrameSpeed = 0;
 
 void setup()
 {
@@ -79,6 +81,7 @@ void openGif(AnimatedGIF *gif, const uint8_t *gifImage, int gifSize)
 
 void playGif(AnimatedGIF *gif, int screenIndex)
 {
+
   digitalWrite(CS_PINS[screenIndex], LOW); // Select the display
   tft.startWrite();
   int res = gif->playFrame(false, NULL);
@@ -88,9 +91,23 @@ void playGif(AnimatedGIF *gif, int screenIndex)
     gif->reset();
     gif->playFrame(false, NULL);
   }
-  if(res == -1) {
-      Serial.printf("Gif Error = %d on screen %d\n",gif->getLastError(),screenIndex);
+  if (res == -1)
+  {
+    Serial.printf("Gif Error = %d on screen %d\n", gif->getLastError(), screenIndex);
   }
   tft.endWrite();
   digitalWrite(CS_PINS[screenIndex], HIGH); // Deselect the display
+
+  if (screenIndex == 0)
+  {
+    if (lastFrameSpeed == 0)
+    {
+      lastFrameSpeed = millis();
+    }
+    else
+    {
+      Serial.printf("Screen 0 FPS=%f\n", (1000.0f / millis() - lastFrameSpeed));
+      lastFrameSpeed = millis();
+    }
+  }
 }

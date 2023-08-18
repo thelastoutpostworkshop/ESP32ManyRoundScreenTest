@@ -21,11 +21,12 @@
 #include "images/hud_7.h"
 #include "images/darthvader.h"
 #include "images/x_wing.h"
+#include "images/bb8.h"
 
  // Adjust this value based on the number of displays
 const int NUM_DISPLAYS = 6;                    
 // Add more CS pins if you have more displays, each display must have a dedicated pin
-const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21,32,33,25}; 
+const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21,32,33,26}; 
 
 AnimatedGIF gif_1;
 AnimatedGIF gif_2;
@@ -54,8 +55,8 @@ void setup()
   openGif(&gif_2, hud_6, sizeof(hud_6));
   openGif(&gif_3, nostromo, sizeof(nostromo));
   openGif(&gif_4, x_wing, sizeof(x_wing));
-  openGif(&gif_5, hud_2, sizeof(hud_2));
-  openGif(&gif_6, hud_7, sizeof(hud_7));
+  openGif(&gif_5, hud_7, sizeof(hud_7));
+  openGif(&gif_6, bb8, sizeof(bb8));
 }
 void loop()
 {
@@ -86,6 +87,9 @@ void playGif(AnimatedGIF *gif, int screenIndex)
     // If no more frames are available, reset the GIF to the beginning
     gif->reset();
     gif->playFrame(false, NULL);
+  }
+  if(res == -1) {
+      Serial.printf("Gif Error = %d \n",gif->getLastError());
   }
   tft.endWrite();
   digitalWrite(CS_PINS[screenIndex], HIGH); // Deselect the display

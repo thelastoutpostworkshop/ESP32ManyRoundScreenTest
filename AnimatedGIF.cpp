@@ -42,6 +42,8 @@ int AnimatedGIF::open(uint8_t *pData, int iDataSize, GIF_DRAW_CALLBACK *pfnDraw)
     if (_gif.usGIFTable == NULL)
     {
         // Handle memory allocation failure
+        Serial.printf("Handle memory allocation failure \n");
+
         return GIF_ERROR_MEMORY; // or an appropriate error code
     }
 

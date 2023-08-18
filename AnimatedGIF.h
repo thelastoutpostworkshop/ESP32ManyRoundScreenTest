@@ -39,7 +39,7 @@
 #ifdef __LINUX__
 #define MAX_WIDTH 2048
 #else
-#define MAX_WIDTH 320
+#define MAX_WIDTH 240
 #endif // __LINUX__
 #define FILE_BUF_SIZE 4096
 

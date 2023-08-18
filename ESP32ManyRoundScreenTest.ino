@@ -55,7 +55,7 @@ void setup()
   openGif(&gif_2, hud_6, sizeof(hud_6));
   openGif(&gif_3, nostromo, sizeof(nostromo));
   openGif(&gif_4, x_wing, sizeof(x_wing));
-  openGif(&gif_5, hud_7, sizeof(hud_7));
+  openGif(&gif_5, hud_2, sizeof(hud_2));
   openGif(&gif_6, bb8, sizeof(bb8));
 }
 void loop()

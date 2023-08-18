@@ -106,7 +106,7 @@ void playGif(AnimatedGIF *gif, int screenIndex)
     }
     else
     {
-      Serial.printf("Screen 0 FPS=%f\n", (1000.0f / millis() - lastFrameSpeed));
+      Serial.printf("Screen 0 FPS=%f\n", 1000.0f / (millis() - lastFrameSpeed));
       lastFrameSpeed = millis();
     }
   }

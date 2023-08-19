@@ -1,11 +1,6 @@
 // Animated GIF with Round Display
 //
-// ESP32 40MHz SPI single frame rendering performance
-// Note: no DMA performance gain on smaller images or transparent pixel GIFs
-//
-#define USE_DMA      // ESP32 ~1.25x single frame rendering performance boost for badgers.h
-                     // Note: Do not use SPI DMA if reading GIF images from SPI SD card on same bus as TFT
-#define NORMAL_SPEED // Comment out for rame rate for render speed test
+
 
 #include <SPI.h>
 #include <TFT_eSPI.h>

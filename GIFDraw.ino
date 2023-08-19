@@ -14,6 +14,9 @@ bool dmaBuf = 0;
 // Draw a line of image directly on the LCD
 void GIFDraw(GIFDRAW *pDraw)
 {
+  digitalWrite(CS_PINS[currentScreenIndex], LOW); // Select the display
+  tft.startWrite();
+
   uint8_t *s;
   uint16_t *d, *usPalette;
   int x, y, iWidth, iCount;
@@ -128,4 +131,6 @@ void GIFDraw(GIFDRAW *pDraw)
       iWidth -= iCount;
     }
   }
+  tft.endWrite();
+  digitalWrite(CS_PINS[currentScreenIndex], HIGH); // Deselect the display
 } /* GIFDraw() */

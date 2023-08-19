@@ -27,6 +27,7 @@
 const int NUM_DISPLAYS = 6;
 // Add more CS pins if you have more displays, each display must have a dedicated pin
 const int CS_PINS[NUM_DISPLAYS] = {19, 22, 21, 32, 33, 26};
+int currentScreenIndex = 0;
 
 AnimatedGIF gif_1;
 AnimatedGIF gif_2;
@@ -81,9 +82,7 @@ void openGif(AnimatedGIF *gif, const uint8_t *gifImage, int gifSize)
 
 void playGif(AnimatedGIF *gif, int screenIndex)
 {
-
-  digitalWrite(CS_PINS[screenIndex], LOW); // Select the display
-  tft.startWrite();
+  currentScreenIndex = screenIndex;
   int res = gif->playFrame(false, NULL);
   if (res == 0)
   {
@@ -95,8 +94,7 @@ void playGif(AnimatedGIF *gif, int screenIndex)
   {
     Serial.printf("Gif Error = %d on screen %d\n", gif->getLastError(), screenIndex);
   }
-  tft.endWrite();
-  digitalWrite(CS_PINS[screenIndex], HIGH); // Deselect the display
+
 
   if (screenIndex == 0)
   {

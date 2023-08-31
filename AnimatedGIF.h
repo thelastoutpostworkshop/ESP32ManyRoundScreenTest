@@ -149,8 +149,11 @@ typedef struct gif_image_tag
     unsigned short pPalette[384]; // can hold RGB565 or RGB888 - set in begin()
     unsigned short pLocalPalette[384]; // color palettes for GIF images
     unsigned char ucLZW[LZW_BUF_SIZE]; // holds 6 chunks (6x255) of GIF LZW data packed together
+
+    // Modified from the original library
     // unsigned short usGIFTable[4096];
     unsigned short *usGIFTable;
+
     unsigned char ucGIFPixels[8192];
     unsigned char bEndOfFrame;
     unsigned char ucGIFBits, ucBackground, ucTransparent, ucCodeStart, ucMap, bUseLocalPalette;

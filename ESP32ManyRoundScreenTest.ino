@@ -19,9 +19,9 @@
 #include "images/bb8.h"
 
 // Adjust this value based on the number of displays
-const int NUM_DISPLAYS = 1;
+const int NUM_DISPLAYS = 6;
 // Add more CS pins if you have more displays, each display must have a dedicated pin
-const int CS_PINS[NUM_DISPLAYS] = { 19 };
+const int CS_PINS[NUM_DISPLAYS] = { 19, 22, 21, 32, 33, 26 };
 int currentScreenIndex = 0;
 
 AnimatedGIF gif_1;
@@ -47,20 +47,20 @@ void setup() {
     tft.setRotation(2);              // Adjust Rotation of your screen (0-3)
     digitalWrite(CS_PINS[i], HIGH);  // Deselect the display
   }
-  // openGif(&gif_1, hyperspace, sizeof(hyperspace));
-  // openGif(&gif_2, hud_6, sizeof(hud_6));
-  // openGif(&gif_3, nostromo, sizeof(nostromo));
+  openGif(&gif_1, hyperspace, sizeof(hyperspace));
+  openGif(&gif_2, hud_6, sizeof(hud_6));
+  openGif(&gif_3, nostromo, sizeof(nostromo));
   openGif(&gif_4, x_wing, sizeof(x_wing));
-  // openGif(&gif_5, hud_2, sizeof(hud_2));
-  // openGif(&gif_6, bb8, sizeof(bb8));
+  openGif(&gif_5, hud_2, sizeof(hud_2));
+  openGif(&gif_6, bb8, sizeof(bb8));
 }
 void loop() {
-  // playGif(&gif_1, 0);
-  // playGif(&gif_2, 1);
-  // playGif(&gif_3, 2);
-  // playGif(&gif_4, 3);
-  // playGif(&gif_5, 4);
-  playGif(&gif_4, 0);
+  playGif(&gif_1, 0);
+  playGif(&gif_2, 1);
+  playGif(&gif_3, 2);
+  playGif(&gif_4, 3);
+  playGif(&gif_5, 4);
+  playGif(&gif_6, 5);
 }
 
 void openGif(AnimatedGIF *gif, const uint8_t *gifImage, int gifSize) {
